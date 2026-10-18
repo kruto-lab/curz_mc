@@ -105,7 +105,7 @@
     color: #ffffff;
     line-height: 1.6;
     max-width: 640px;
-    margin: 0 auto;
+    margin: 0 auto; 
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 102, 0, 0.5);
   }
 
@@ -169,7 +169,7 @@
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Прижимает цену к низу */
+    justify-content: space-between;
   }
 
   .merch-card:hover { transform: translateY(-6px); border-color: #ff6600; box-shadow: 0 12px 34px rgba(213, 0, 255, 0.25); }
@@ -178,7 +178,6 @@
   .merch-card p  { color: #c5aee6; font-size: 0.92rem; line-height: 1.5; margin-bottom: 15px; }
   .merch-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 12px; margin-bottom: 16px; background-color: #fff; }
 
-  /* Стили для цены в карточках */
   .price-tag {
     display: inline-block;
     background: #ff6600;
@@ -187,18 +186,75 @@
     font-size: 1rem;
     padding: 5px 12px;
     border-radius: 8px;
-    margin-top: auto; /* Прижимает к низу карточки */
+    margin-top: auto;
     align-self: flex-start;
   }
 
+  /* ПОДВАЛ (FOOTER) */
   footer {
-    text-align: center;
-    padding: 22px;
+    position: relative; /* Чтобы позиционировать кнопки абсолютно */
+    padding: 25px 40px;
     font-size: 0.85rem;
     color: #a38cc9;
     border-top: 1px solid rgba(255, 100, 0, 0.2);
-    background: rgba(10, 5, 20, 0.6);
-    backdrop-filter: blur(8px);
+    background: rgba(10, 5, 20, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center; /* Центрируем копирайт */
+    align-items: center;
+    min-height: 80px;
+  }
+
+  /* Кнопки прижаты к правому краю */
+  .social-links {
+    position: absolute;
+    right: 40px; /* Отступ от правого края */
+    top: 50%;
+    transform: translateY(-50%); /* Выравнивание по вертикали по центру подвала */
+    display: flex;
+    flex-direction: column; /* Ставим кнопки друг под другом */
+    gap: 8px; /* Расстояние между кнопками */
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: rgba(30, 10, 60, 0.8);
+    border: 1px solid #ff6600;
+    color: #ff6600;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    white-space: nowrap; /* Чтобы текст не переносился */
+  }
+
+  .social-link:hover {
+    background: #ff6600;
+    color: #1a0533;
+    box-shadow: 0 4px 15px rgba(255, 102, 0, 0.5);
+    transform: translateX(-3px); /* Легкий сдвиг влево при наведении */
+  }
+
+  /* На мобильных устройствах прячем абсолютное позиционирование */
+  @media (max-width: 768px) {
+    footer {
+      flex-direction: column;
+      padding: 20px;
+      gap: 15px;
+    }
+    .social-links {
+      position: static;
+      transform: none;
+      flex-direction: row; /* На телефоне кнопки будут в ряд по центру */
+      justify-content: center;
+      width: 100%;
+    }
   }
 
   /* --- МОДАЛЬНОЕ ОКНО --- */
@@ -225,7 +281,6 @@
   .modal-info h2 { color: #ffffff; font-size: 1.8rem; margin-bottom: 15px; }
   .modal-info p { color: #c5aee6; font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px; }
 
-  /* Большая цена в модальном окне */
   .modal-price {
     font-size: 2rem;
     font-weight: 900;
@@ -253,6 +308,7 @@
 </header>
 
 <main>
+  <!-- ГЛАВНАЯ -->
   <section class="page active" id="home">
     <h1 class="nick">curzMC</h1>
     <p class="tagline">Если вы это видите, пока все получается</p>
@@ -289,79 +345,60 @@
     <p class="section-sub">Официальная атрибутика curzMC. Первая коллекция. (Нажмите на товар)</p>
     
     <div class="merch-grid">
-      <!-- 1. Худи First Album - 8500 -->
       <div class="merch-card" data-img="img/merch-hoodie-orange.jpg" data-title="Худи 'First Album'" data-desc="Оранжевый цвет, принт на груди и рукавах." data-price="8 500 руб.">
         <img src="img/merch-hoodie-orange.jpg" alt="Оранжевое худи First Album">
         <h3>Худи "First Album"</h3>
         <p>Оранжевый цвет, принт на груди и рукавах.</p>
         <span class="price-tag">8 500 ₽</span>
       </div>
-      
-      <!-- 2. Футболка Live 2026 - 4000 -->
       <div class="merch-card" data-img="img/merch-tshirt-gradient.jpg" data-title="Футболка 'Live 2026'" data-desc="Градиент оранжевый/фиолетовый." data-price="4 000 руб.">
         <img src="img/merch-tshirt-gradient.jpg" alt="Футболка Live 2026">
         <h3>Футболка "Live 2026"</h3>
         <p>Градиент оранжевый/фиолетовый.</p>
         <span class="price-tag">4 000 ₽</span>
       </div>
-      
-      <!-- 3. Футболка Live Черная - 2500 -->
       <div class="merch-card" data-img="img/merch-tshirt-black.jpg" data-title="Футболка 'Live'" data-desc="Классический черный цвет." data-price="2 500 руб.">
         <img src="img/merch-tshirt-black.jpg" alt="Черная футболка Live">
         <h3>Футболка "Live"</h3>
         <p>Классический черный цвет.</p>
         <span class="price-tag">2 500 ₽</span>
       </div>
-      
-      <!-- 4. Худи N1 Черное - 5500 -->
       <div class="merch-card" data-img="img/merch-hoodie-black.jpg" data-title="Худи 'N1 CMC'" data-desc="Черное худи с контрастным белым принтом." data-price="5 500 руб.">
         <img src="img/merch-hoodie-black.jpg" alt="Черное худи N1">
         <h3>Худи "N1 CMC"</h3>
         <p>Черное худи с контрастным белым принтом.</p>
         <span class="price-tag">5 500 ₽</span>
       </div>
-      
-      <!-- 5. Худи N1 Красное - 5500 -->
       <div class="merch-card" data-img="img/merch-hoodie-red.jpg" data-title="Худи 'N1 CMC' (Red)" data-desc="Яркая версия культового дизайна." data-price="5 500 руб.">
         <img src="img/merch-hoodie-red.jpg" alt="Красное худи N1">
         <h3>Худи "N1 CMC" (Red)</h3>
         <p>Яркая версия культового дизайна.</p>
         <span class="price-tag">5 500 ₽</span>
       </div>
-      
-      <!-- 6. Свитшот Frt Alb Оранжевый - 6800 -->
       <div class="merch-card" data-img="img/merch-sweatshirt-orange.jpg" data-title="Свитшот 'Frt Alb'" data-desc="Стильный оранжевый свитшот с фиолетовыми акцентами." data-price="6 800 руб.">
         <img src="img/merch-sweatshirt-orange.jpg" alt="Оранжевый свитшот">
         <h3>Свитшот "Frt Alb"</h3>
         <p>Стильный оранжевый свитшот с фиолетовыми акцентами.</p>
         <span class="price-tag">6 800 ₽</span>
       </div>
-      
-      <!-- 7. Свитшот Frt Alb Фиолетовый - 6800 -->
       <div class="merch-card" data-img="img/merch-sweatshirt-purple.jpg" data-title="Свитшот 'Frt Alb' (Purple)" data-desc="Фиолетовая версия с яркими рукавами." data-price="6 800 руб.">
         <img src="img/merch-sweatshirt-purple.jpg" alt="Фиолетовый свитшот">
         <h3>Свитшот "Frt Alb" (Purple)</h3>
         <p>Фиолетовая версия с яркими рукавами.</p>
         <span class="price-tag">6 800 ₽</span>
       </div>
-      
-      <!-- 8. Свитшот Первый Альбом - 5000 -->
       <div class="merch-card" data-img="img/merch-sweatshirt-black-rus.jpg" data-title="Свитшот 'Первый Альбом'" data-desc="Минималистичный дизайн с надписью 2026." data-price="5 000 руб.">
         <img src="img/merch-sweatshirt-black-rus.jpg" alt="Свитшот Первый Альбом">
         <h3>Свитшот "Первый Альбом"</h3>
         <p>Минималистичный дизайн с надписью 2026.</p>
         <span class="price-tag">5 000 ₽</span>
       </div>
-      
-      <!-- 9. Футболка Live Белая - 2500 -->
       <div class="merch-card" data-img="img/merch-tshirt-white.jpg" data-title="Футболка 'Live' (White)" data-desc="Светлая версия для лета." data-price="2 500 руб.">
         <img src="img/merch-tshirt-white.jpg" alt="Белая футболка Live">
         <h3>Футболка "Live" (White)</h3>
         <p>Светлая версия для лета.</p>
         <span class="price-tag">2 500 ₽</span>
       </div>
-      
-      <!-- 10. Худи N1 Белое - 5500 -->
       <div class="merch-card" data-img="img/merch-hoodie-white.jpg" data-title="Худи 'N1 CMC' (White)" data-desc="Чистый белый цвет с черным логотипом." data-price="5 500 руб.">
         <img src="img/merch-hoodie-white.jpg" alt="Белое худи N1">
         <h3>Худи "N1 CMC" (White)</h3>
@@ -372,7 +409,26 @@
   </section>
 </main>
 
-<footer>© 2025 curzMC — все только начинается</footer>
+<!-- ПОДВАЛ -->
+<footer>
+  <p>© 2025 curzMC — все только начинается</p>
+  
+  <div class="social-links">
+    <a href="https://t.me/curzmcoff" target="_blank" class="social-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+      </svg>
+      Telegram
+    </a>
+    
+    <a href="https://www.tiktok.com/@ofcurzmc?_r=1&_t=ZS-9AfBzkwfcCz" target="_blank" class="social-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+      </svg>
+      TikTok
+    </a>
+  </div>
+</footer>
 
 <!-- МОДАЛЬНОЕ ОКНО -->
 <div class="modal" id="merchModal">
@@ -387,10 +443,8 @@
       <h2 id="modalTitle">Название</h2>
       <p id="modalDesc">Описание</p>
       
-      <!-- Здесь будет отображаться цена -->
       <div class="modal-price" id="modalPrice">0 руб.</div>
       
-      <!-- Кнопка сразу ведет в Telegram @reallyLarry -->
       <a href="https://t.me/reallyLarry" target="_blank" class="btn-order">
         Заказать в Telegram
       </a>
@@ -416,24 +470,21 @@
   const modalImg = document.getElementById('modalImg');
   const modalTitle = document.getElementById('modalTitle');
   const modalDesc = document.getElementById('modalDesc');
-  const modalPrice = document.getElementById('modalPrice'); // Получаем элемент цены
+  const modalPrice = document.getElementById('modalPrice');
   const modalClose = document.getElementById('modalClose');
   const merchCards = document.querySelectorAll('.merch-card');
 
-  // Открытие модалки при клике на карточку
   merchCards.forEach(card => {
     card.addEventListener('click', () => {
       modalImg.src = card.getAttribute('data-img');
       modalTitle.innerText = card.getAttribute('data-title');
       modalDesc.innerText = card.getAttribute('data-desc');
-      // Подставляем цену из data-атрибута
       modalPrice.innerText = card.getAttribute('data-price');
       
       modal.classList.add('active');
     });
   });
 
-  // Закрытие модалки
   modalClose.addEventListener('click', () => modal.classList.remove('active'));
   modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
 </script>
