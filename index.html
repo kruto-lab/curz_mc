@@ -7,7 +7,6 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* --- ФОН: ОРАНЖЕВО-ФИОЛЕТОВАЯ ГАММА --- */
   body {
     font-family: 'Segoe UI', Arial, sans-serif;
     min-height: 100vh;
@@ -46,7 +45,6 @@
 
   header, main, footer { position: relative; z-index: 1; }
 
-  /* ШАПКА + НАВИГАЦИЯ */
   header {
     display: flex;
     justify-content: space-between;
@@ -59,19 +57,9 @@
     background: rgba(10, 5, 20, 0.6);
   }
 
-  .logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    color: #ff6600;
-    text-shadow: 0 0 18px rgba(255, 100, 0, 0.6);
-  }
+  .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: 2px; color: #ff6600; text-shadow: 0 0 18px rgba(255, 100, 0, 0.6); }
 
-  nav {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
+  nav { display: flex; gap: 8px; flex-wrap: wrap; }
 
   nav button {
     background: rgba(45, 10, 80, 0.6);
@@ -86,37 +74,16 @@
     backdrop-filter: blur(4px);
   }
 
-  nav button:hover {
-    background: rgba(255, 100, 0, 0.2);
-    border-color: #ff6600;
-    box-shadow: 0 0 14px rgba(255, 100, 0, 0.4);
-  }
+  nav button:hover { background: rgba(255, 100, 0, 0.2); border-color: #ff6600; box-shadow: 0 0 14px rgba(255, 100, 0, 0.4); }
+  nav button.active { background: #ff6600; color: #1a0533; border-color: #ff6600; box-shadow: 0 0 22px rgba(255, 100, 0, 0.7); }
 
-  nav button.active {
-    background: #ff6600;
-    color: #1a0533;
-    border-color: #ff6600;
-    box-shadow: 0 0 22px rgba(255, 100, 0, 0.7);
-  }
-
-  /* КОНТЕНТ */
-  main {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 24px;
-  }
+  main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 24px; }
 
   .page { display: none; width: 100%; max-width: 1000px; text-align: center; }
   .page.active { display: block; animation: fadeIn 0.45s ease; }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ГЛАВНАЯ */
   .nick {
     font-size: clamp(3rem, 12vw, 7rem);
     font-weight: 900;
@@ -131,9 +98,7 @@
     margin-bottom: 28px;
   }
 
-  @keyframes glowText {
-    to { background-position: 200% center; }
-  }
+  @keyframes glowText { to { background-position: 200% center; } }
 
   .tagline {
     font-size: clamp(1.1rem, 3vw, 1.6rem);
@@ -144,7 +109,6 @@
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 102, 0, 0.5);
   }
 
-  /* ЗАГОЛОВКИ РАЗДЕЛОВ */
   .section-title {
     font-size: clamp(1.8rem, 5vw, 2.6rem);
     font-weight: 800;
@@ -160,15 +124,41 @@
     text-shadow: 0 2px 5px rgba(0,0,0,0.9);
   }
 
-  /* КАРТОЧКИ (Песни и Мерч) */
-  .cards, .merch-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-    margin-top: 20px;
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 20px; }
+
+  .card {
+    background: rgba(30, 10, 60, 0.6);
+    border: 1px solid rgba(255, 100, 0, 0.25);
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    backdrop-filter: blur(10px);
   }
 
-  .card, .merch-card {
+  .card:hover { transform: translateY(-6px); border-color: #ff6600; box-shadow: 0 12px 34px rgba(213, 0, 255, 0.25); }
+
+  .card .icon { font-size: 2.5rem; margin-bottom: 16px; display: block; }
+  .card h3 { color: #ffffff; margin-bottom: 12px; font-size: 1.25rem; }
+  .card p  { color: #c5aee6; font-size: 0.95rem; line-height: 1.5; }
+
+  .badge {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #1a0533;
+    background: #ff6600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+  }
+
+  /* МЕРЧ */
+  .merch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 20px; }
+
+  .merch-card {
     background: rgba(30, 10, 60, 0.6);
     border: 1px solid rgba(255, 100, 0, 0.25);
     border-radius: 16px;
@@ -176,39 +166,29 @@
     text-align: left;
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     backdrop-filter: blur(10px);
-    cursor: pointer; /* Указывает, что можно кликнуть */
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Прижимает цену к низу */
   }
 
-  .card:hover, .merch-card:hover {
-    transform: translateY(-6px);
-    border-color: #ff6600;
-    box-shadow: 0 12px 34px rgba(213, 0, 255, 0.25);
-  }
+  .merch-card:hover { transform: translateY(-6px); border-color: #ff6600; box-shadow: 0 12px 34px rgba(213, 0, 255, 0.25); }
 
-  .card .icon { font-size: 2.2rem; margin-bottom: 14px; display: block; }
-  .card h3, .merch-card h3 { color: #ffffff; margin-bottom: 8px; font-size: 1.15rem; }
-  .card p, .merch-card p  { color: #c5aee6; font-size: 0.92rem; line-height: 1.5; }
+  .merch-card h3 { color: #ffffff; margin-bottom: 8px; font-size: 1.15rem; }
+  .merch-card p  { color: #c5aee6; font-size: 0.92rem; line-height: 1.5; margin-bottom: 15px; }
+  .merch-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 12px; margin-bottom: 16px; background-color: #fff; }
 
-  .badge {
+  /* Стили для цены в карточках */
+  .price-tag {
     display: inline-block;
-    margin-top: 14px;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #1a0533;
     background: #ff6600;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-weight: 700;
-  }
-
-  .merch-card img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 16px;
-    background-color: #fff;
+    color: #1a0533;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 5px 12px;
+    border-radius: 8px;
+    margin-top: auto; /* Прижимает к низу карточки */
+    align-self: flex-start;
   }
 
   footer {
@@ -221,132 +201,44 @@
     backdrop-filter: blur(8px);
   }
 
-  /* --- ВСПЛЫВАЮЩЕЕ ОКНО (МОДАЛКА) --- */
-  .modal {
-    display: none; /* Скрыто по умолчанию */
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-
-  .modal.active {
-    display: flex;
-    animation: fadeIn 0.3s ease;
-  }
+  /* --- МОДАЛЬНОЕ ОКНО --- */
+  .modal { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+  .modal.active { display: flex; animation: fadeIn 0.3s ease; }
 
   .modal-content {
-    background: #1a0b2e; /* Темно-фиолетовый фон окна */
-    border: 2px solid #ff6600;
-    border-radius: 20px;
-    max-width: 900px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    box-shadow: 0 0 50px rgba(255, 100, 0, 0.3);
+    background: #1a0b2e; border: 2px solid #ff6600; border-radius: 20px; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto;
+    display: flex; flex-direction: column; position: relative; box-shadow: 0 0 50px rgba(255, 100, 0, 0.3);
   }
 
-  @media (min-width: 768px) {
-    .modal-content {
-      flex-direction: row; /* На больших экранах картинка слева, текст справа */
-    }
-  }
+  @media (min-width: 768px) { .modal-content { flex-direction: row; } }
 
   .modal-close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
+    position: absolute; top: 15px; right: 20px; font-size: 2rem; color: #ff6600; cursor: pointer; font-weight: bold; z-index: 10;
+    transition: transform 0.2s; background: rgba(0,0,0,0.5); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  }
+  .modal-close:hover { transform: scale(1.1); color: #fff; }
+
+  .modal-img-container { flex: 1; background: #fff; display: flex; align-items: center; justify-content: center; padding: 20px; border-radius: 18px 0 0 18px; }
+  .modal-img-container img { max-width: 100%; max-height: 70vh; object-fit: contain; border-radius: 10px; }
+
+  .modal-info { flex: 1; padding: 40px 30px; text-align: left; display: flex; flex-direction: column; justify-content: center; }
+  .modal-info h2 { color: #ffffff; font-size: 1.8rem; margin-bottom: 15px; }
+  .modal-info p { color: #c5aee6; font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px; }
+
+  /* Большая цена в модальном окне */
+  .modal-price {
     font-size: 2rem;
+    font-weight: 900;
     color: #ff6600;
-    cursor: pointer;
-    font-weight: bold;
-    z-index: 10;
-    transition: transform 0.2s;
-    background: rgba(0,0,0,0.5);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .modal-close:hover {
-    transform: scale(1.1);
-    color: #fff;
-  }
-
-  .modal-img-container {
-    flex: 1;
-    background: #fff; /* Белый фон под фото товара */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    border-radius: 18px 0 0 18px;
-  }
-
-  .modal-img-container img {
-    max-width: 100%;
-    max-height: 70vh;
-    object-fit: contain;
-    border-radius: 10px;
-  }
-
-  .modal-info {
-    flex: 1;
-    padding: 40px 30px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .modal-info h2 {
-    color: #ffffff;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-  }
-
-  .modal-info p {
-    color: #c5aee6;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
   }
 
   .btn-order {
-    display: inline-block;
-    background: #ff6600;
-    color: #1a0533;
-    text-decoration: none;
-    padding: 15px 30px;
-    border-radius: 30px;
-    font-size: 1.1rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(255, 102, 0, 0.4);
+    display: inline-block; background: #ff6600; color: #1a0533; text-decoration: none; padding: 15px 30px; border-radius: 30px;
+    font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; text-align: center; border: none; cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 102, 0, 0.4); width: 100%;
   }
-
-  .btn-order:hover {
-    background: #fff;
-    color: #ff6600;
-    box-shadow: 0 5px 25px rgba(255, 102, 0, 0.6);
-    transform: translateY(-2px);
-  }
-
+  .btn-order:hover { background: #fff; color: #ff6600; box-shadow: 0 5px 25px rgba(255, 102, 0, 0.6); transform: translateY(-2px); }
 </style>
 </head>
 <body>
@@ -361,97 +253,120 @@
 </header>
 
 <main>
-  <!-- ГЛАВНАЯ -->
   <section class="page active" id="home">
     <h1 class="nick">curzMC</h1>
     <p class="tagline">Если вы это видите, пока все получается</p>
   </section>
 
-  <!-- АЛЬБОМЫ / ПЕСНИ -->
   <section class="page" id="music">
-    <h2 class="section-title">Альбомы / Песни</h2>
-    <p class="section-sub">Здесь скоро появится музыка</p>
+    <h2 class="section-title">Музыка</h2>
+    <p class="section-sub">Синглы, альбомы и живой звук</p>
+    
     <div class="cards">
       <div class="card">
         <span class="icon">🎵</span>
-        <h3>Первая песня</h3>
-        <p>Релиз ожидается на следующей неделе. Следите за обновлениями!</p>
+        <h3>Синглы</h3>
+        <p>Песни, не вошедшие в альбомы.</p>
         <span class="badge">Скоро</span>
       </div>
       <div class="card">
         <span class="icon">💿</span>
-        <h3>Альбом</h3>
-        <p>Пока в работе. Как только будет готов — обязательно появится здесь.</p>
+        <h3>Альбомы</h3>
+        <p>Релиз дебютного альбома ожидается в декабре. Следите за обновлениями!</p>
         <span class="badge">В работе</span>
+      </div>
+      <div class="card">
+        <span class="icon">🎤</span>
+        <h3>Лайв</h3>
+        <p>Живые записи без сведения. Только динамический микрофон и атмосфера сцены.</p>
+        <span class="badge">Скоро</span>
       </div>
     </div>
   </section>
 
-  <!-- МЕРЧ -->
   <section class="page" id="merch">
     <h2 class="section-title">Мерч</h2>
-    <p class="section-sub">Официальная атрибутика curzMC. Первая коллекция. (Нажмите на товар, чтобы рассмотреть)</p>
+    <p class="section-sub">Официальная атрибутика curzMC. Первая коллекция. (Нажмите на товар)</p>
     
     <div class="merch-grid">
-      <!-- Обратите внимание: добавлены data-атрибуты для всплывающего окна -->
-      <div class="merch-card" data-img="img/merch-hoodie-orange.jpg" data-title="Худи 'First Album'" data-desc="Оранжевый цвет, принт на груди и рукавах.">
+      <!-- 1. Худи First Album - 8500 -->
+      <div class="merch-card" data-img="img/merch-hoodie-orange.jpg" data-title="Худи 'First Album'" data-desc="Оранжевый цвет, принт на груди и рукавах." data-price="8 500 руб.">
         <img src="img/merch-hoodie-orange.jpg" alt="Оранжевое худи First Album">
         <h3>Худи "First Album"</h3>
         <p>Оранжевый цвет, принт на груди и рукавах.</p>
+        <span class="price-tag">8 500 ₽</span>
       </div>
       
-      <div class="merch-card" data-img="img/merch-tshirt-gradient.jpg" data-title="Футболка 'Live 2026'" data-desc="Градиент оранжевый/фиолетовый.">
+      <!-- 2. Футболка Live 2026 - 4000 -->
+      <div class="merch-card" data-img="img/merch-tshirt-gradient.jpg" data-title="Футболка 'Live 2026'" data-desc="Градиент оранжевый/фиолетовый." data-price="4 000 руб.">
         <img src="img/merch-tshirt-gradient.jpg" alt="Футболка Live 2026">
         <h3>Футболка "Live 2026"</h3>
         <p>Градиент оранжевый/фиолетовый.</p>
+        <span class="price-tag">4 000 ₽</span>
       </div>
       
-      <div class="merch-card" data-img="img/merch-tshirt-black.jpg" data-title="Футболка 'Live'" data-desc="Классический черный цвет.">
+      <!-- 3. Футболка Live Черная - 2500 -->
+      <div class="merch-card" data-img="img/merch-tshirt-black.jpg" data-title="Футболка 'Live'" data-desc="Классический черный цвет." data-price="2 500 руб.">
         <img src="img/merch-tshirt-black.jpg" alt="Черная футболка Live">
         <h3>Футболка "Live"</h3>
         <p>Классический черный цвет.</p>
+        <span class="price-tag">2 500 ₽</span>
       </div>
       
-      <div class="merch-card" data-img="img/merch-hoodie-black.jpg" data-title="Худи 'N1 CMC'" data-desc="Черное худи с контрастным белым принтом.">
+      <!-- 4. Худи N1 Черное - 5500 -->
+      <div class="merch-card" data-img="img/merch-hoodie-black.jpg" data-title="Худи 'N1 CMC'" data-desc="Черное худи с контрастным белым принтом." data-price="5 500 руб.">
         <img src="img/merch-hoodie-black.jpg" alt="Черное худи N1">
         <h3>Худи "N1 CMC"</h3>
         <p>Черное худи с контрастным белым принтом.</p>
+        <span class="price-tag">5 500 ₽</span>
       </div>
       
-      <div class="merch-card" data-img="img/merch-hoodie-red.jpg" data-title="Худи 'N1 CMC' (Red)" data-desc="Яркая версия культового дизайна.">
+      <!-- 5. Худи N1 Красное - 5500 -->
+      <div class="merch-card" data-img="img/merch-hoodie-red.jpg" data-title="Худи 'N1 CMC' (Red)" data-desc="Яркая версия культового дизайна." data-price="5 500 руб.">
         <img src="img/merch-hoodie-red.jpg" alt="Красное худи N1">
         <h3>Худи "N1 CMC" (Red)</h3>
         <p>Яркая версия культового дизайна.</p>
+        <span class="price-tag">5 500 ₽</span>
       </div>
       
-      <div class="merch-card" data-img="img/merch-sweatshirt-orange.jpg" data-title="Свитшот 'Frt Alb'" data-desc="Стильный оранжевый свитшот с фиолетовыми акцентами.">
+      <!-- 6. Свитшот Frt Alb Оранжевый - 6800 -->
+      <div class="merch-card" data-img="img/merch-sweatshirt-orange.jpg" data-title="Свитшот 'Frt Alb'" data-desc="Стильный оранжевый свитшот с фиолетовыми акцентами." data-price="6 800 руб.">
         <img src="img/merch-sweatshirt-orange.jpg" alt="Оранжевый свитшот">
         <h3>Свитшот "Frt Alb"</h3>
         <p>Стильный оранжевый свитшот с фиолетовыми акцентами.</p>
+        <span class="price-tag">6 800 ₽</span>
       </div>
       
-      <div class="merch-card" data-img="img/merch-sweatshirt-purple.jpg" data-title="Свитшот 'Frt Alb' (Purple)" data-desc="Фиолетовая версия с яркими рукавами.">
+      <!-- 7. Свитшот Frt Alb Фиолетовый - 6800 -->
+      <div class="merch-card" data-img="img/merch-sweatshirt-purple.jpg" data-title="Свитшот 'Frt Alb' (Purple)" data-desc="Фиолетовая версия с яркими рукавами." data-price="6 800 руб.">
         <img src="img/merch-sweatshirt-purple.jpg" alt="Фиолетовый свитшот">
         <h3>Свитшот "Frt Alb" (Purple)</h3>
         <p>Фиолетовая версия с яркими рукавами.</p>
+        <span class="price-tag">6 800 ₽</span>
       </div>
       
-      <div class="merch-card" data-img="img/merch-sweatshirt-black-rus.jpg" data-title="Свитшот 'Первый Альбом'" data-desc="Минималистичный дизайн с надписью 2026.">
+      <!-- 8. Свитшот Первый Альбом - 5000 -->
+      <div class="merch-card" data-img="img/merch-sweatshirt-black-rus.jpg" data-title="Свитшот 'Первый Альбом'" data-desc="Минималистичный дизайн с надписью 2026." data-price="5 000 руб.">
         <img src="img/merch-sweatshirt-black-rus.jpg" alt="Свитшот Первый Альбом">
         <h3>Свитшот "Первый Альбом"</h3>
         <p>Минималистичный дизайн с надписью 2026.</p>
+        <span class="price-tag">5 000 ₽</span>
       </div>
       
-      <div class="merch-card" data-img="img/merch-tshirt-white.jpg" data-title="Футболка 'Live' (White)" data-desc="Светлая версия для лета.">
+      <!-- 9. Футболка Live Белая - 2500 -->
+      <div class="merch-card" data-img="img/merch-tshirt-white.jpg" data-title="Футболка 'Live' (White)" data-desc="Светлая версия для лета." data-price="2 500 руб.">
         <img src="img/merch-tshirt-white.jpg" alt="Белая футболка Live">
         <h3>Футболка "Live" (White)</h3>
         <p>Светлая версия для лета.</p>
+        <span class="price-tag">2 500 ₽</span>
       </div>
       
-      <div class="merch-card" data-img="img/merch-hoodie-white.jpg" data-title="Худи 'N1 CMC' (White)" data-desc="Чистый белый цвет с черным логотипом.">
+      <!-- 10. Худи N1 Белое - 5500 -->
+      <div class="merch-card" data-img="img/merch-hoodie-white.jpg" data-title="Худи 'N1 CMC' (White)" data-desc="Чистый белый цвет с черным логотипом." data-price="5 500 руб.">
         <img src="img/merch-hoodie-white.jpg" alt="Белое худи N1">
         <h3>Худи "N1 CMC" (White)</h3>
         <p>Чистый белый цвет с черным логотипом.</p>
+        <span class="price-tag">5 500 ₽</span>
       </div>
     </div>
   </section>
@@ -459,27 +374,34 @@
 
 <footer>© 2025 curzMC — все только начинается</footer>
 
-<!-- ВСПЛЫВАЮЩЕЕ ОКНО (МОДАЛКА) -->
+<!-- МОДАЛЬНОЕ ОКНО -->
 <div class="modal" id="merchModal">
   <div class="modal-content">
     <div class="modal-close" id="modalClose">&times;</div>
+    
     <div class="modal-img-container">
       <img src="" alt="Товар" id="modalImg">
     </div>
+    
     <div class="modal-info">
       <h2 id="modalTitle">Название</h2>
       <p id="modalDesc">Описание</p>
-      <!-- Ссылка на Telegram для заказа (замените ссылку на свою) -->
-      <a href="https://t.me/ВАШ_НИК_В_ТЕЛЕГРАМ" target="_blank" class="btn-order">Заказать</a>
+      
+      <!-- Здесь будет отображаться цена -->
+      <div class="modal-price" id="modalPrice">0 руб.</div>
+      
+      <!-- Кнопка сразу ведет в Telegram @reallyLarry -->
+      <a href="https://t.me/reallyLarry" target="_blank" class="btn-order">
+        Заказать в Telegram
+      </a>
     </div>
   </div>
 </div>
 
 <script>
-  // Логика переключения страниц
+  // --- ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК ---
   const buttons = document.querySelectorAll('nav button');
   const pages = document.querySelectorAll('.page');
-
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       buttons.forEach(b => b.classList.remove('active'));
@@ -489,35 +411,31 @@
     });
   });
 
-  // Логика всплывающего окна для Мерча
+  // --- ЛОГИКА МОДАЛЬНОГО ОКНА ---
   const modal = document.getElementById('merchModal');
   const modalImg = document.getElementById('modalImg');
   const modalTitle = document.getElementById('modalTitle');
   const modalDesc = document.getElementById('modalDesc');
+  const modalPrice = document.getElementById('modalPrice'); // Получаем элемент цены
   const modalClose = document.getElementById('modalClose');
   const merchCards = document.querySelectorAll('.merch-card');
 
-  // Открытие окна при клике на карточку
+  // Открытие модалки при клике на карточку
   merchCards.forEach(card => {
     card.addEventListener('click', () => {
       modalImg.src = card.getAttribute('data-img');
       modalTitle.innerText = card.getAttribute('data-title');
       modalDesc.innerText = card.getAttribute('data-desc');
+      // Подставляем цену из data-атрибута
+      modalPrice.innerText = card.getAttribute('data-price');
+      
       modal.classList.add('active');
     });
   });
 
-  // Закрытие окна по крестику
-  modalClose.addEventListener('click', () => {
-    modal.classList.remove('active');
-  });
-
-  // Закрытие окна при клике на темный фон
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.classList.remove('active');
-    }
-  });
+  // Закрытие модалки
+  modalClose.addEventListener('click', () => modal.classList.remove('active'));
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
 </script>
 
 </body>
